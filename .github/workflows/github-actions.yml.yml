@@ -32,4 +32,4 @@ jobs:
         run: dotnet build server/beautysalon.csproj --configuration Release --no-restore  # Same here, point to server/beautysalon.csproj
 
       - name: Test 🧪
-        run: dotnet test beauty-salon-management/beautysalonTEST/beautysalonTEST.csproj --configuration Release --no-build  # Test path is still the same
+        run: dotnet test beautysalonTEST/beautysalonTEST.csproj --configuration Release --no-build  # Test path is still the same
