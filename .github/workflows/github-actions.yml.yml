@@ -1,0 +1,38 @@
+name: Build & Test 🧪
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOTNET_VERSION: '8.0.x'  # Use .NET 8
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET 📦
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: List project files
+        run: |
+          echo "Listing files in the repository:"
+          ls -R
+
+      - name: Install dependencies 📂
+        run: dotnet restore server/beautysalon.csproj
+
+      - name: Build 🧱
+        run: dotnet build server/beautysalon.csproj --configuration Release --no-restore
+
+      - name: Clean build directories (optional) 🧹
+        run: dotnet clean beautysalonTEST/beautysalonTEST.csproj
+
+      - name: Test 🧪
+        run: dotnet test beautysalonTEST/beautysalonTEST.csproj --configuration Release
