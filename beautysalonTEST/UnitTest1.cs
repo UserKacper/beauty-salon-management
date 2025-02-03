@@ -12,5 +12,10 @@ namespace beautysalonTEST
         {
 
         }
+        [Fact]
+        public void Test3 ()
+        {
+
+        }
     }
 }
