@@ -1,0 +1,30 @@
+name: Build & Test 🧪
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DOTNET_VERSION: '8.0.x'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET 📦
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Install dependencies 📂
+        run: dotnet restore beauty-salon-management/beautysalon/beautysalon.csproj  # Specify the project or solution file
+
+      - name: Build 🧱
+        run: dotnet build beauty-salon-management/beautysalon/beautysalon.csproj --configuration Release --no-restore  # Same here, specify the project
+
+      - name: Test 🧪
+        run: dotnet test beauty-salon-management/beautysalonTEST/beautysalonTEST.csproj --configuration Release --no-build  # Ensure WebApi is the correct test project path
