@@ -7,5 +7,10 @@ namespace beautysalonTEST
         {
 
         }
+        [Fact]
+        public void Test2 ()
+        {
+
+        }
     }
 }
