@@ -20,6 +20,11 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
+      - name: List project files
+        run: |
+          echo "Listing files in the repository:"
+          ls -R
+
       - name: Install dependencies 📂
         run: dotnet restore beauty-salon-management/beautysalon/beautysalon.csproj
 
